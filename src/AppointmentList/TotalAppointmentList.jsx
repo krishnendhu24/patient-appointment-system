@@ -19,8 +19,6 @@ export default function TotalAppointmentList() {
 
   return (
     <div style={containerStyle}>
-
-        
       <h2 style={headingStyle}>Total Appointments</h2>
       <table style={tableStyle}>
         <thead>
