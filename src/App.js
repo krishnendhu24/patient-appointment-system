@@ -1,23 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Login from './login/login';
+import Home from './home/home';
+import { useEffect, useState } from 'react';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth } from './Config/Config';
+import AppTopBar from './AppBar/AppBar';
+import Add from './Appointments/Add';
 
 function App() {
+const [isLoggedIn, setisLoggedIn] = useState(false);
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+  if (user) {
+    setisLoggedIn(true);
+    // ...
+  } else {
+    setisLoggedIn(false);
+  }
+});
+  },[auth])
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {isLoggedIn&&
+    <AppTopBar/>
+    }
+    <Routes>
+      {isLoggedIn?(
+        <>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/add-appointment' element={<Add/>}/>
+        </>
+    ):
+    <Route path='/' element={<Login/>}/>
+    }
+    </Routes>
     </div>
   );
 }
