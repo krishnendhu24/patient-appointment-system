@@ -45,7 +45,7 @@ const containerStyle = {
   maxWidth: '600px',
   margin: '40px auto',
   padding: '20px',
-  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+  boxShadow: '0 4px 12px rgba(87, 45, 45, 0.1)',
   borderRadius: '10px',
   backgroundColor: '#ffffff',
   fontFamily: 'Arial, sans-serif'
