@@ -19,6 +19,8 @@ export default function TotalAppointmentList() {
 
   return (
     <div style={containerStyle}>
+
+        
       <h2 style={headingStyle}>Total Appointments</h2>
       <table style={tableStyle}>
         <thead>
@@ -45,7 +47,7 @@ const containerStyle = {
   maxWidth: '600px',
   margin: '40px auto',
   padding: '20px',
-  boxShadow: '0 4px 12px rgba(87, 45, 45, 0.1)',
+  boxShadow: '0 4px 12px rgba(39, 33, 33, 0.1)',
   borderRadius: '10px',
   backgroundColor: '#ffffff',
   fontFamily: 'Arial, sans-serif'
