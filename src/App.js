@@ -7,6 +7,8 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from './Config/Config';
 import AppTopBar from './AppBar/AppBar';
 import Add from './Appointments/Add';
+import TotalAppointmentList from './AppointmentList/TotalAppointmentList';
+import TotalPatientList from './PatientList/TotalPatientList';
 
 function App() {
 const [isLoggedIn, setisLoggedIn] = useState(false);
@@ -33,6 +35,8 @@ const [isLoggedIn, setisLoggedIn] = useState(false);
         <>
         <Route path='/' element={<Home/>}/>
         <Route path='/add-appointment' element={<Add/>}/>
+        <Route path='/total-appointment-list' element={<TotalAppointmentList/>}/>
+        <Route path='/total-patients-list' element={<TotalPatientList/>}/>
         </>
     ):
     <Route path='/' element={<Login/>}/>

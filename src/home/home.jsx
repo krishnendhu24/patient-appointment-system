@@ -9,6 +9,16 @@ const Dashboard = () => {
     navigate('/add-appointment'); // <-- change the route to your actual add page
   };
 
+   const handleTotalList = () =>{
+    navigate('/total-appointment-list');
+  };
+
+   const handleTotalPatient = () =>{
+    navigate('/total-patient-list');
+  };
+
+
+
   return (
     <Box sx={{ mt: 5, textAlign: 'center' }}>
       <Typography variant="h4" gutterBottom>
@@ -33,6 +43,7 @@ const Dashboard = () => {
                 color: '#fff',
                 fontWeight: 'bold',
               }}
+              onClick={item.title === 'Total Appointments' ? handleTotalList : null} // Navigate to total list on click
             >
               {item.title}
               <Typography variant="h5" mt={1}>
