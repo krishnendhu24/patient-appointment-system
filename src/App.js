@@ -9,6 +9,8 @@ import AppTopBar from './AppBar/AppBar';
 import Add from './Appointments/Add';
 import TotalAppointmentList from './AppointmentList/TotalAppointmentList';
 import TotalPatientList from './PatientList/TotalPatientList';
+import Doctores from './Doctors/Doctores';
+import TodaysConsultationList from './ConsultationList/TodaysConsultationList';
 
 function App() {
 const [isLoggedIn, setisLoggedIn] = useState(false);
@@ -36,7 +38,9 @@ const [isLoggedIn, setisLoggedIn] = useState(false);
         <Route path='/' element={<Home/>}/>
         <Route path='/add-appointment' element={<Add/>}/>
         <Route path='/total-appointment-list' element={<TotalAppointmentList/>}/>
-        <Route path='/total-patients-list' element={<TotalPatientList/>}/>
+        <Route path='/total-patient-list' element={<TotalPatientList/>}/>
+        <Route path='/todays-consultation-list' element={<TodaysConsultationList />}/>
+        <Route path='/doctors' element={<Doctores/>}/>
         </>
     ):
     <Route path='/' element={<Login/>}/>

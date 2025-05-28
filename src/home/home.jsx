@@ -1,23 +1,29 @@
-import { useNavigate } from 'react-router-dom'
-import './home.css'
+import { useNavigate } from 'react-router-dom';
+import './home.css';
 import { Box, Button, Grid, Paper, Typography } from '@mui/material';
 
 const Dashboard = () => {
   const navigate = useNavigate();
 
   const handleAdd = () => {
-    navigate('/add-appointment'); // <-- change the route to your actual add page
+    navigate('/add-appointment');
   };
 
-   const handleTotalList = () =>{
+  const handleTotalList = () => {
     navigate('/total-appointment-list');
   };
 
-   const handleTotalPatient = () =>{
+  const handleTotalPatient = () => {
     navigate('/total-patient-list');
   };
 
+  const handleDoctors = () => {
+    navigate('/doctors'); // <- Make sure this route exists in your app
+  };
 
+  const handleTodaysConsultation = () => {
+    navigate('/todays-consultation-list');
+  };
 
   return (
     <Box sx={{ mt: 5, textAlign: 'center' }}>
@@ -42,12 +48,21 @@ const Dashboard = () => {
                 background: item.color,
                 color: '#fff',
                 fontWeight: 'bold',
+                cursor: 'pointer'
               }}
-              onClick={item.title === 'Total Appointments' ? handleTotalList : null} // Navigate to total list on click
+              onClick={
+                item.title === 'Total Appointments'
+                  ? handleTotalList
+                  : item.title === 'Total Patients'
+                  ? handleTotalPatient
+                  : item.title === 'Today\'s Consultations'
+                  ? handleTodaysConsultation
+                  : null
+              }
             >
               {item.title}
               <Typography variant="h5" mt={1}>
-                -- 
+                --
               </Typography>
             </Paper>
           </Grid>
@@ -55,7 +70,7 @@ const Dashboard = () => {
       </Grid>
 
       {/* Add Appointment Button */}
-      <Box sx={{ mt: 4 }}>
+      <Box sx={{ mt: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
         <Button
           variant="contained"
           size="medium"
@@ -66,21 +81,46 @@ const Dashboard = () => {
             fontWeight: 600,
             fontSize: '0.95rem',
             borderRadius: 2,
-            background: 'linear-gradient(90deg,rgb(3, 18, 31) 0%,rgb(10, 20, 22) 100%)',
-            boxShadow: '0 4px 16px rgba(33,150,243,0.3)',
+            background: 'linear-gradient(90deg,rgb(95, 91, 104) 0%,rgb(150, 146, 160) 100%)',
+            boxShadow: '0 4px 16px rgba(36, 39, 41, 0.3)',
             textTransform: 'none',
             letterSpacing: 0.8,
             transition: '0.3s',
             '&:hover': {
-              background: 'linear-gradient(90deg,rgb(5, 11, 12) 0%,rgb(9, 18, 26) 100%)',
+              background: 'linear-gradient(90deg,rgb(125, 120, 135) 0%,rgb(125, 120, 135) 100%)',
               transform: 'scale(1.05)'
             }
           }}
         >
           + Add Appointment
         </Button>
+
+        {/* Doctors Button */}
+        <Button
+          variant="contained"
+          size="medium"
+          onClick={handleDoctors}
+          sx={{
+            px: 3,
+            py: 1,
+            fontWeight: 600,
+            fontSize: '0.95rem',
+            borderRadius: 2,
+            background: 'linear-gradient(90deg,rgb(95, 91, 104) 0%,rgb(150, 146, 160) 100%)',
+            boxShadow: '0 4px 16px rgba(36, 39, 41, 0.3)',
+            textTransform: 'none',
+            letterSpacing: 0.8,
+            transition: '0.3s',
+            '&:hover': {
+              background: 'linear-gradient(90deg,rgb(125, 120, 135) 0%,rgb(125, 120, 135) 100%)',
+              transform: 'scale(1.05)'            }
+          }}
+        >
+          Doctors
+        </Button>
       </Box>
     </Box>
   );
 };
+
 export default Dashboard;

@@ -1,88 +1,79 @@
 import React from 'react';
+import {
+  Box,
+  Paper,
+  Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow
+} from '@mui/material';
 
-export default function TotalAppointmentList() {
-  const appointments = [
-    { doctor: 'Dr. Smith', patient: 'Alice' },
-    { doctor: 'Dr. Smith', patient: 'Bob' },
-    { doctor: 'Dr. Lee', patient: 'Charlie' },
-    { doctor: 'Dr. Smith', patient: 'David' },
-    { doctor: 'Dr. Lee', patient: 'Eva' }
+const TotalAppointmentList = () => {
+  const data = [
+    { doctor: 'Dr. Smith', appointments: 3 },
+    { doctor: 'Dr. Lee', appointments: 2 },
+    { doctor: 'Dr. Patel', appointments: 5 },
+    { doctor: 'Dr. Johnson', appointments: 4 },
+    { doctor: 'Dr. Gupta', appointments: 6 },
+    { doctor: 'Dr. Kim', appointments: 3 },
+    { doctor: 'Dr. Fernandez', appointments: 7 }
   ];
 
-  // Count total appointments per doctor
-  const totalAppointments = appointments.reduce((acc, curr) => {
-    acc[curr.doctor] = (acc[curr.doctor] || 0) + 1;
-    return acc;
-  }, {});
-
-  const tableData = Object.entries(totalAppointments); // [ [doctor, count], ... ]
-
   return (
-    <div style={containerStyle}>
-      <h2 style={headingStyle}>Total Appointments</h2>
-      <table style={tableStyle}>
-        <thead>
-          <tr>
-            <th style={headerCellStyle}>Doctor</th>
-            <th style={headerCellStyle}>Total Appointments</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tableData.map(([doctor, count], index) => (
-            <tr key={doctor} style={index % 2 === 0 ? rowStyle : altRowStyle}>
-              <td style={cellStyle}>{doctor}</td>
-              <td style={cellStyle}>{count}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <Box sx={{ mt: 8, display: 'flex', justifyContent: 'center' }}>
+      <Paper
+        elevation={6}
+        sx={{
+          width: '90%',
+          maxWidth: 700,
+          borderRadius: 4,
+          p: 3,
+          backgroundColor: '#f3f4f6'
+        }}
+      >
+        <Typography
+          variant="h5"
+          align="center"
+          gutterBottom
+          sx={{ fontWeight: 'bold', color: '#3f51b5' }}
+        >
+          Total Appointments
+        </Typography>
+
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow sx={{ backgroundColor: '#e0e7ff' }}>
+                <TableCell sx={{ fontWeight: 'bold', color: '#1e40af' }}>
+                  Doctor
+                </TableCell>
+                <TableCell sx={{ fontWeight: 'bold', color: '#1e40af' }}>
+                  Total Appointments
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {data.map((row, index) => (
+                <TableRow
+                  key={index}
+                  sx={{
+                    '&:nth-of-type(even)': { backgroundColor: '#f0f9ff' }
+                  }}
+                >
+                  <TableCell>{row.doctor}</TableCell>
+                  <TableCell>{row.appointments}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Paper>
+    </Box>
   );
-}
-
-// Styles
-const containerStyle = {
-  maxWidth: '600px',
-  margin: '40px auto',
-  padding: '20px',
-  boxShadow: '0 4px 12px rgba(39, 33, 33, 0.1)',
-  borderRadius: '10px',
-  backgroundColor: '#ffffff',
-  fontFamily: 'Arial, sans-serif'
 };
 
-const headingStyle = {
-  marginBottom: '20px',
-  textAlign: 'center',
-  fontSize: '24px',
-  color: '#333'
-};
+export default TotalAppointmentList;
 
-const tableStyle = {
-  width: '100%',
-  borderCollapse: 'collapse',
-};
-
-const headerCellStyle = {
-  borderBottom: '2px solid #ccc',
-  padding: '12px',
-  backgroundColor: '#f5f5f5',
-  fontWeight: 'bold',
-  textAlign: 'left',
-  color: '#333'
-};
-
-const cellStyle = {
-  padding: '12px',
-  borderBottom: '1px solid #eee',
-  textAlign: 'left',
-  color: '#555'
-};
-
-const rowStyle = {
-  backgroundColor: '#fff',
-};
-
-const altRowStyle = {
-  backgroundColor: '#f9f9f9',
-};
