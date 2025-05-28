@@ -9,6 +9,7 @@ export default function Add() {
     const [gender, setgender] = useState("");
     const [address, setaddress] = useState("");
     const [mobile, setmobile] = useState("");
+    const [doctor, setdoctor] = useState("");
 
 
 
@@ -21,6 +22,7 @@ export default function Add() {
             gender: gender,
             address: address,
             mobile: mobile,
+            doctor: doctor,
         }).then(() => {
             alert("Appointment added successfully.");
             setname("");
@@ -28,6 +30,7 @@ export default function Add() {
             setgender("");
             setaddress("");
             setmobile("");
+            setdoctor("");
         }).catch((error) => {
             console.log(error);
         });
@@ -102,6 +105,30 @@ export default function Add() {
                 value={mobile}
                 onChange={(e) => setmobile(e.target.value.replace(/\D/, ""))}
                 helperText="Enter a valid mobile number"
+            />
+            <FormControl fullWidth required>
+                <InputLabel id="doctor-label">Doctor Name</InputLabel>
+                <Select
+                    labelId="doctor-label"
+                    value={doctor}
+                    label="Doctor"
+                    onChange={(e) => setdoctor(e.target.value)}
+                    displayEmpty
+                >
+                    <MenuItem value="" disabled>
+                        Select Gender
+                    </MenuItem>
+                    <MenuItem value="Male">doctor1</MenuItem>
+                    <MenuItem value="Female">doctor 2</MenuItem>
+                
+                </Select>
+            </FormControl>
+            <TextField
+                label="Address"
+                required
+                fullWidth
+                value={address}
+                onChange={(e) => setaddress(e.target.value)}
             />
             <Button variant="contained" type="submit" size="large">
                 Submit
