@@ -164,7 +164,7 @@ const handleLogout=()=>{
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ backgroundColor: ' #2d5986' }}>
         <Toolbar>
           <IconButton
             size="large"

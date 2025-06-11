@@ -11,6 +11,10 @@ import TotalAppointmentList from './AppointmentList/TotalAppointmentList';
 import TotalPatientList from './PatientList/TotalPatientList';
 import Doctores from './Doctors/Doctores';
 import TodaysConsultationList from './ConsultationList/TodaysConsultationList';
+import CancelledAppointmentList from'./CancelledList/CancelledAppointmentList';
+import DoctorsList from './Doctors/DoctorsList';
+import Hospital from './Hospital/Hospital';
+import Gallery from './Hospital/Gallery';
 
 function App() {
 const [isLoggedIn, setisLoggedIn] = useState(false);
@@ -41,6 +45,10 @@ const [isLoggedIn, setisLoggedIn] = useState(false);
         <Route path='/total-patient-list' element={<TotalPatientList/>}/>
         <Route path='/todays-consultation-list' element={<TodaysConsultationList />}/>
         <Route path='/doctors' element={<Doctores/>}/>
+        <Route path='/doctors-list' element={<DoctorsList/>}/>
+        <Route path='/cancelled-appointment-list' element={<CancelledAppointmentList/>}/>
+        <Route path='/Hospital' element={<Hospital/>}/>
+        <Route path='/gallery' element={<Gallery/>}/> 
         </>
     ):
     <Route path='/' element={<Login/>}/>
